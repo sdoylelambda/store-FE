@@ -1,5 +1,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Goal
+Create a single page app, that is fully respsonsive, where users can login search products, add to cart purchase with a credit card and save for later. Admin can add, edit, and delete products.
+
+## Step 1
+## Login/Authentication
+0auth
+
+## Step 2
+## Private Routes and redirects
+0auth, BrowserRouter, Link
+
+## Step 3
+## Create Forms
+Formik - 'Forms no tears' :)
+
 ## Available Scripts
 
 In the project directory, you can run:
