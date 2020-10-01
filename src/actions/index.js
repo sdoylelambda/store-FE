@@ -15,19 +15,27 @@ export const fetchProductList = () => async (dispatch) => {
 }
 
 // CREATE
-export const newProduct = data => async dispatch => {
-  const { productId, productName, productDescription, productPicture, productPrice } = data
+export const newProduct = (data) => async (dispatch) => {
+  const {
+    productId,
+    productName,
+    productDescription,
+    productPicture,
+    productPrice,
+  } = data
   dispatch({ type: actionTypes.POST_PRODUCTS_REQUEST })
   try {
-    const post = await .post('/products', 
-    { 
-      product_id: productId, 
-      product_name: productName, 
-      product_description: productDescription, 
-      product_picture: productPicture, 
-      product_price: productPrice  
+    const post = await axios.post('/products', {
+      product_id: productId,
+      product_name: productName,
+      product_description: productDescription,
+      product_picture: productPicture,
+      product_price: productPrice,
     })
-    dispatch({ type: actionTypes.POST_PRODUCTS_SUCCESS, payload: post.data.postResult }) // check payload
+    dispatch({
+      type: actionTypes.POST_PRODUCTS_SUCCESS,
+      payload: post.data.postResult,
+    }) // check payload
   } catch (err) {
     console.log('newProduct err:', err)
     dispatch({ type: actionTypes.POST_PRODUCTS_FAILURE })
@@ -35,18 +43,27 @@ export const newProduct = data => async dispatch => {
 }
 
 // UPDATE
-export const updateProduct = (productID) => async dispatch => {
-  const { productId, productName, productDescription, productPicture, productPrice } = data
+export const updateProduct = (productID) => async (dispatch) => {
+  const {
+    productId,
+    productName,
+    productDescription,
+    productPicture,
+    productPrice,
+  } = data
   dispatch({ type: actionTypes.UPDATE_PRODUCT_REQUEST })
   try {
     const post = axios.put('/products', {
-      product_id: productId, 
-      product_name: productName, 
-      product_description: productDescription, 
-      product_picture: productPicture, 
-      product_price: productPrice  
+      product_id: productId,
+      product_name: productName,
+      product_description: productDescription,
+      product_picture: productPicture,
+      product_price: productPrice,
     })
-    dispatch({ type: actionTypes.UPDATE_PRODUCT_SUCCESS, payload: post.data.postResult }) // here too
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCT_SUCCESS,
+      payload: post.data.postResult,
+    }) // here too
   } catch (err) {
     console.log('updateProduct err:', err)
     dispatch({ type: actionTypes.UPDATE_PRODUCT_FAILURE, payload: err.message }) // ...
@@ -54,7 +71,7 @@ export const updateProduct = (productID) => async dispatch => {
 }
 
 // DELETE
-export const deleteProduct = (id) => async dispatch => {
+export const deleteProduct = (id) => async (dispatch) => {
   dispatch({ type: actionTypes.DELETE_PRODUCT_REQUEST })
   try {
     axios.delete(`/products/${id}`)
@@ -67,8 +84,6 @@ export const deleteProduct = (id) => async dispatch => {
     console.log('updateProduct err:', err)
     dispatch({ type: actionTypes.UPDATE_PRODUCT_FAILURE, payload: err.message }) // ...
   }
-
-
 }
 
 // export const outOfStockProduct(){}
